@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres_library
+    environment:
+      POSTGRES_DB: library
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 1234
+    networks:
+      - unared
+  web:
+    image: unapp:1
+    container_name: unapp
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - unared
+
+networks:
+  unared:
+    driver: bridge
