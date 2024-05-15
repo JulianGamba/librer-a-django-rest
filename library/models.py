@@ -5,6 +5,7 @@ class Author(models.Model):
     last_name = models.CharField(max_length=30)
     birthdate = models.DateField()
     
+    
     def __str__(self):
         return self.name + " " + self.last_name
     
@@ -22,6 +23,6 @@ class Book(models.Model):
     ]
 
     title = models.CharField(max_length=30)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='books')
     publication_year = models.PositiveIntegerField()
     genre = models.CharField(choices=GENERO_CHOICES)
