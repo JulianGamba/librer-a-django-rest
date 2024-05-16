@@ -10,4 +10,5 @@ router.register(r'books', views.BookViewSet, basename='book')
 urlpatterns = [
     path('', include(router.urls)),
     path('authors/<int:pk>/books/', views.AuthorBookList.as_view(), name='author-books-list'),  # Nueva URL para la lista de libros del autor
+    path('authors_before_a_year/<int:year>/', views.authors_before_a_year, name='authors_before_a_year'),
 ]

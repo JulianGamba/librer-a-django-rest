@@ -26,3 +26,6 @@ class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='books')
     publication_year = models.PositiveIntegerField()
     genre = models.CharField(choices=GENERO_CHOICES)
+
+    def __str__(self):
+        return self.title + " de " + str(self.author) + " género " + self.genre + " en el año " + str(self.publication_year)
