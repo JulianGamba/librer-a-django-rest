@@ -11,4 +11,5 @@ urlpatterns = [
     path('', include(router.urls)),
     path('authors/<int:pk>/books/', views.AuthorBookList.as_view(), name='author-books-list'),  # Nueva URL para la lista de libros del autor
     path('authors_before_a_year/<int:year>/', views.authors_before_a_year, name='authors_before_a_year'),
+    path('books_by_genre/<str:genre>/', views.books_by_genre, name='books-by-genre'),  # Nueva URL para libros por género
 ]
