@@ -10,11 +10,10 @@ from .serializers import AuthorSerializer, BookSerializer
 
 @api_view(['GET'])
 def api_root(request, format=None):
-    limit_year = 1900
     return Response({
         'Authors': reverse('author-list', request=request, format=format),
         'Books': reverse('book-list', request=request, format=format),
-        'Authors_Before_A_Year': reverse('authors_before_a_year', kwargs={'year': limit_year}, request=request, format=format)
+        'Authors_Before_A_Year': reverse('authors_before_a_year', kwargs={'year': 'year'}, request=request, format=format)
     })
 
 class AuthorViewSet(viewsets.ModelViewSet):
